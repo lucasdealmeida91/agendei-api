@@ -6,7 +6,6 @@ async function GetDoctors(req, res) {
 
     const doctors = await serviceDoctor.GetDoctors(name);
 
-    console.log(doctors);
 
     res.status(200).json(doctors);
 
@@ -18,7 +17,6 @@ async function InsertDoctor(req, res) {
 
     const doctor = await serviceDoctor.InsertDoctor(name, specialty, icon);
 
-    console.log(doctor);
 
     res.status(201).json(doctor);
 
@@ -31,7 +29,6 @@ async function UpdateDoctor(req, res) {
 
     const doctor = await serviceDoctor.UpdateDoctor(id, name, specialty, icon);
 
-    console.log(doctor);
 
     res.status(200).json(doctor);
 
@@ -44,7 +41,6 @@ async function DeleteDoctor(req, res) {
 
     const doctor = await serviceDoctor.DeleteDoctor(id );
 
-    console.log(doctor);
 
     res.status(200).json(doctor);
 
