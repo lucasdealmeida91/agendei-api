@@ -47,4 +47,10 @@ async function DeleteDoctor(req, res) {
 
 }
 
-export default { GetDoctors, InsertDoctor,UpdateDoctor, DeleteDoctor }
+async function GetServicesByDoctor(req, res) {
+    const  id_doctor  = req.params.id_doctor;
+    const services = await serviceDoctor.GetServicesByDoctor(id_doctor);
+    res.status(200).json(services);
+}
+
+export default { GetDoctors, InsertDoctor,UpdateDoctor, DeleteDoctor,GetServicesByDoctor }

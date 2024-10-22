@@ -58,15 +58,29 @@ async function UpdateDoctor(id, name, specialty, icon) {
     return { id };
 }
 
-async function DeleteDoctor(id, ) {
+async function DeleteDoctor(id,) {
     let sql = `delete from doctors where id_doctor = ?`;
     await query(sql, [id]);
     return { id };
-  
+
+}
+
+
+async function GetServicesByDoctor(id_doctor) {
+    let sql = `
+    select  d.id_service,s.description,d.price
+    from doctors_services d
+    join services s on (s.id_service = d.id_service)
+    where d.id_doctor = ?
+    order by s.description    
+    `;
+    const services = await query(sql, [id_doctor]);
+    return services;
+
 }
 
 
 
 
 
-export default { GetDoctors, InsertDoctor, UpdateDoctor, DeleteDoctor }
+export default { GetDoctors, InsertDoctor, UpdateDoctor, DeleteDoctor,GetServicesByDoctor }
